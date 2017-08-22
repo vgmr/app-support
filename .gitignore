@@ -1,4 +1,4 @@
-_node_modules
+node_modules
 build
 app-support/dist
-app-support/_node_modules
+app-support/node_modules
