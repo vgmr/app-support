@@ -8,7 +8,7 @@ export interface AppContext {
 */
 // Store Model
 export interface Model {
-  test: fromTest.Model  
+    test: fromTest.Model;
 }
 
 // Root Reducer
@@ -17,5 +17,4 @@ export default Redux.combineReducers<Model>({
 });
 
 // Selectors
-
-export const getValue = (s:Model) => fromTest.getValue(s.test);
+export const getValue = (s: Model) => fromTest.getValue(s.test);

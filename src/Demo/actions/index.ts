@@ -1,3 +1,3 @@
-import {createAction} from 'redux-helper';
+import { createAction } from 'redux-helper';
 
-export const test = createAction<string>("TEST");
+export const test = createAction<{value:string}>('TEST');

@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts-ts start",
-    "build": "cd app-support && yarn build",
+    "build": "cd app-support && yarn build && cd .. && yarn upgrade app-support@./app-support",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   }

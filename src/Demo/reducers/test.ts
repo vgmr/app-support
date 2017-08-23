@@ -1,23 +1,27 @@
 import {
- test
+    test
 } from '../actions';
 
-// Store Model 
+
 export interface Model {
-    value:string
-}
+    value: string
+};
 
 const defaultState: Model = {
-    value: ''
-}
+    value: 'sciao'
+};
 
 // Root Reducer
 export default (state: Model = defaultState, action: any): Model => {
     if (test.matchAction(action)) {
-        return {value:'test'};
+        return { ...state, value: action.payload.value }
     }
     return state;
 }
 
-//Sekectors
-export const getValue = (s:Model) => s.value;
+// Selectors
+export const getValue = (s: Model) => s.value;
+
+
+
+
