@@ -1,38 +1,36 @@
 import { connect, MapStateToProps, Component as ReduxComponent,MapDispatchToPropsObject } from 'react-redux';
-import { withRouter, RouteComponentProps } from 'react-router';
 import {Component} from 'react';
 
-type Props<STATE, DISPATCH, ROUTER> = STATE & DISPATCH & RouteComponentProps<ROUTER>;
+type Props<STATE, DISPATCH> = STATE & DISPATCH;
 
-interface Config<STATE, DISPATCH, ROUTER> {
-    mapStateToProps: MapStateToProps<STATE, RouteComponentProps<ROUTER>>,
+interface Config<STATE, DISPATCH> {
+    mapStateToProps: MapStateToProps<STATE, {}>,
     actions: DISPATCH,
 }
 
-const apply = <STATE, DISPATCH, ROUTER>(config: Config<STATE, DISPATCH, ROUTER>) => {
+const apply = <STATE, DISPATCH>(config: Config<STATE, DISPATCH>) => {
     return {
-        connect: (compo: ReduxComponent<Props<STATE, DISPATCH, ROUTER>>) => {
+        connect: (compo: ReduxComponent<Props<STATE, DISPATCH>>) => {
             const mdtp = config.actions as any as MapDispatchToPropsObject;
-            const c1 = connect(config.mapStateToProps, mdtp)(compo);
-            return withRouter(c1);
+            return connect(config.mapStateToProps, mdtp)(compo);
         },
-        StatefulCompo: class StatefulCompo<S> extends Component<Props<STATE, DISPATCH, ROUTER>, S> {
+        StatefulCompo: class StatefulCompo<S> extends Component<Props<STATE, DISPATCH>, S> {
 
         },
-        StatefulCompoWithProps: class StatefulCompo<PROPS, STATE> extends Component<Props<STATE, DISPATCH, ROUTER> & PROPS, STATE> {
+        StatefulCompoWithProps: class StatefulCompo<PROPS, STATE> extends Component<Props<STATE, DISPATCH> & PROPS, STATE> {
 
         },
-        StatelessCompo: (compo: (props: Props<STATE, DISPATCH, ROUTER>) => React.ReactElement<any>) => compo
+        StatelessCompo: (compo: (props: Props<STATE, DISPATCH>) => React.ReactElement<any>) => compo
     };
 }
 
-export const appConnector = <ROUTER>() => <STATE, DISPATCH>(
-    mapStateToProps: MapStateToProps<STATE, RouteComponentProps<ROUTER>>,
+export const appConnector = <STATE, DISPATCH>(
+    mapStateToProps: MapStateToProps<STATE,{}>,
     actions: DISPATCH,
 ) => {
     return apply({
         mapStateToProps,
         actions,
-    } as Config<STATE, DISPATCH, ROUTER>);
+    } as Config<STATE, DISPATCH>);
 }
 

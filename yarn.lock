@@ -210,7 +210,7 @@ app-root-path@^2.0.1:
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.0.1.tgz#cd62dcf8e4fd5a417efc664d2e5b10653c651b46"
 
 app-support@./app-support:
-  version "1.0.3"
+  version "1.0.4"
   dependencies:
     "@types/lodash" "^4.14.74"
     "@types/react" "^16.0.2"

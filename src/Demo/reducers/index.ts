@@ -1,4 +1,3 @@
-import * as Redux from 'redux';
 import * as fromContext from './context';
 
 // Store Model
