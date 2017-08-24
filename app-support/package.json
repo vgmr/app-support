@@ -1,6 +1,7 @@
 {
   "name": "app-support",
-  "version": "1.0.1",
+  "description": "Application support library, includes redux, redux-helper, react-router",
+  "version": "1.0.2",
   "private": false,
   "author": {
     "name": "Simone Mulas",
@@ -11,6 +12,7 @@
   "files": [
     "dist"
   ],
+  "typings":"dist/index.d.ts",
   "dependencies": {
     "@types/lodash": "^4.14.74",
     "@types/react": "^16.0.2",
