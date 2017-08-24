@@ -1,7 +1,7 @@
 {
   "name": "app-support",
   "description": "Application support library, includes redux, redux-helper, react-router",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "author": {
     "name": "Simone Mulas",
@@ -12,12 +12,14 @@
   "files": [
     "dist"
   ],
-  "typings":"dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "dependencies": {
     "@types/lodash": "^4.14.74",
     "@types/react": "^16.0.2",
     "@types/react-dom": "^15.5.2",
     "@types/react-redux": "^5.0.4",
+    "@types/react-router": "^4.0.15",
+    "@types/react-router-dom": "^4.0.7",
     "@types/redux-thunk": "^2.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -28,7 +30,6 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "@types/react-router-dom": "^4.0.7",
     "@types/jest": "^20.0.6",
     "@types/node": "^8.0.20",
     "babel-cli": "^6.11.4",
