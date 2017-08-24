@@ -1,20 +1,15 @@
 import * as Redux from 'redux';
-import * as fromTest from './test';
+import * as fromContext from './context';
 
-/*
-export interface AppContext {
-    store: Redux.Store<IAppState>;
-}
-*/
 // Store Model
 export interface Model {
-    test: fromTest.Model;
+    test: fromContext.Model;
 }
 
 // Root Reducer
 export default Redux.combineReducers<Model>({
-    test: fromTest.default
+    test: fromContext.default
 });
 
 // Selectors
-export const getValue = (s: Model) => fromTest.getValue(s.test);
+export const getContextName = (s: Model) => fromContext.getContextName(s.test);

@@ -1,3 +1,3 @@
 import { createAction } from 'redux-helper';
 
-export const test = createAction<{value:string}>('TEST');
+export const setContextName = createAction<{value:string}>('SET_CONTEXT_NAME');
