@@ -9,6 +9,10 @@
     address "^1.0.1"
     debug "^2.6.0"
 
+"@types/history@*":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.0.tgz#093d67ed780d889c9543f6dca24ebee0b6b9fc45"
+
 "@types/jest@^20.0.6":
   version "20.0.6"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.6.tgz#7e0ba76ddfacb42ee9bb0d8833e5208cf0680431"
@@ -33,6 +37,21 @@
   dependencies:
     "@types/react" "*"
     redux "^3.6.0"
+
+"@types/react-router-dom@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.0.7.tgz#65b192f7a5dbd1c05a8d04cc5863c9775705a435"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*", "@types/react-router@^4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.15.tgz#be8aaefc20afd968a5dbcffcf09060e6c2e8746e"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
 
 "@types/react@*":
   version "16.0.2"
@@ -191,12 +210,14 @@ app-root-path@^2.0.1:
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.0.1.tgz#cd62dcf8e4fd5a417efc664d2e5b10653c651b46"
 
 app-support@./app-support:
-  version "1.0.1"
+  version "1.0.3"
   dependencies:
     "@types/lodash" "^4.14.74"
     "@types/react" "^16.0.2"
     "@types/react-dom" "^15.5.2"
     "@types/react-redux" "^5.0.4"
+    "@types/react-router" "^4.0.15"
+    "@types/react-router-dom" "^4.0.7"
     "@types/redux-thunk" "^2.1.0"
     react "^15.6.1"
     react-dom "^15.6.1"
