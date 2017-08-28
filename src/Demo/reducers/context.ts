@@ -3,8 +3,8 @@ import {
 } from '../actions';
 
 export interface Model {
-    contextName: string
-};
+    contextName: string;
+}
 
 const defaultState: Model = {
     contextName: 'default context name'
@@ -13,14 +13,10 @@ const defaultState: Model = {
 // Root Reducer
 export default (state: Model = defaultState, action: any): Model => {
     if (setContextName.matchAction(action)) {
-        return { ...state, contextName: action.payload.value }
+        return { ...state, contextName: action.payload.value };
     }
     return state;
-}
+};
 
 // Selectors
 export const getContextName = (s: Model) => s.contextName;
-
-
-
-

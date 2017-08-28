@@ -1,38 +1,22 @@
-import { connect, MapStateToProps, Component as ReduxComponent,MapDispatchToPropsObject } from 'react-redux';
+import { connect, MapStateToPropsParam, MapDispatchToPropsParam, Component } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router';
-import {Component} from 'react';
 
-type Props<STATE, DISPATCH, ROUTER> = STATE & DISPATCH & RouteComponentProps<ROUTER>;
+import * as React from 'react';
 
-interface Config<STATE, DISPATCH, ROUTER> {
-    mapStateToProps: MapStateToProps<STATE, RouteComponentProps<ROUTER>>,
-    actions: DISPATCH,
-}
-
-const apply = <STATE, DISPATCH, ROUTER>(config: Config<STATE, DISPATCH, ROUTER>) => {
+const appConnectorWithRouter = <TRouterProps,TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
+    mstp: MapStateToPropsParam<TPropsFromState, TOwnProps & RouteComponentProps<TRouterProps>>,
+    mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps & RouteComponentProps<TRouterProps>>
+) => {
     return {
-        connect: (compo: ReduxComponent<Props<STATE, DISPATCH, ROUTER>>) => {
-            const mdtp = config.actions as any as MapDispatchToPropsObject;
-            const c1 = connect(config.mapStateToProps, mdtp)(compo);
-            return withRouter(c1);
+        connect: (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {
+            return withRouter(connect(mstp, mdtp)(compo));
         },
-        StatefulCompo: class StatefulCompo<S> extends Component<Props<STATE, DISPATCH, ROUTER>, S> {
+        StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps& RouteComponentProps<TRouterProps>, STATE> {
 
         },
-        StatefulCompoWithProps: class StatefulCompo<PROPS, STATE> extends Component<Props<STATE, DISPATCH, ROUTER> & PROPS, STATE> {
-
-        },
-        StatelessCompo: (compo: (props: Props<STATE, DISPATCH, ROUTER>) => React.ReactElement<any>) => compo
+        StatelessCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps& RouteComponentProps<TRouterProps>) => React.ReactElement<any>) => compo
     };
 }
 
-export const appConnectorWithRouter = <ROUTER>() => <STATE, DISPATCH>(
-    mapStateToProps: MapStateToProps<STATE, RouteComponentProps<ROUTER>>,
-    actions: DISPATCH,
-) => {
-    return apply({
-        mapStateToProps,
-        actions,
-    } as Config<STATE, DISPATCH, ROUTER>);
-}
+export { appConnectorWithRouter }
 

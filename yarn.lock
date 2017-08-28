@@ -46,7 +46,7 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router@*", "@types/react-router@^4.0.15":
+"@types/react-router@*":
   version "4.0.15"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.15.tgz#be8aaefc20afd968a5dbcffcf09060e6c2e8746e"
   dependencies:
@@ -209,14 +209,14 @@ app-root-path@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.0.1.tgz#cd62dcf8e4fd5a417efc664d2e5b10653c651b46"
 
-app-support@./app-support:
-  version "1.0.4"
+app-support@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/app-support/-/app-support-1.0.8.tgz#85c23baf7919525d6b413fef0726d3b8bc08f3e1"
   dependencies:
     "@types/lodash" "^4.14.74"
     "@types/react" "^16.0.2"
     "@types/react-dom" "^15.5.2"
     "@types/react-redux" "^5.0.4"
-    "@types/react-router" "^4.0.15"
     "@types/react-router-dom" "^4.0.7"
     "@types/redux-thunk" "^2.1.0"
     react "^15.6.1"

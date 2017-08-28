@@ -1,10 +1,19 @@
-import { appConnector } from 'app-support';
+import { appConnectorWithRouter } from 'app-support';
 import { setContextName } from '../actions';
 import * as reducers from '../reducers';
 
-export default appConnector<{ id: string }>()(
+export default appConnectorWithRouter<{ id: string }, {title:string}>()(
     (s) => ({
         contextName: reducers.getContextName(s)
-    }), {
-        setContextName
-    });
+    }),
+    {setContextName}
+    /*
+    (d) => {
+        return {
+            setContextName: (value: string) => {
+               d( setContextName({ value }));
+            }
+        };
+    }
+    */
+);

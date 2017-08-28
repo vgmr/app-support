@@ -1,36 +1,25 @@
-import { connect, MapStateToProps, Component as ReduxComponent,MapDispatchToPropsObject } from 'react-redux';
-import {Component} from 'react';
+import {
+    connect, 
+    MapStateToPropsParam,
+    MapDispatchToPropsParam, 
+    //MapDispatchToPropsFactory,
+    //InferableComponentEnhancerWithProps,
+    Component
+} from 'react-redux';
+import * as React from 'react';
 
-type Props<STATE, DISPATCH> = STATE & DISPATCH;
-
-interface Config<STATE, DISPATCH> {
-    mapStateToProps: MapStateToProps<STATE, {}>,
-    actions: DISPATCH,
-}
-
-const apply = <STATE, DISPATCH>(config: Config<STATE, DISPATCH>) => {
+const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
+    mstp: MapStateToPropsParam<TPropsFromState, TOwnProps>,
+    mdtp: MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps>//    MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps> //| TPropsFromDispatch
+) => {
     return {
-        connect: (compo: ReduxComponent<Props<STATE, DISPATCH>>) => {
-            const mdtp = config.actions as any as MapDispatchToPropsObject;
-            return connect(config.mapStateToProps, mdtp)(compo);
+        connect: (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {
+            return connect(mstp, mdtp)(compo); //as any as InferableComponentEnhancerWithProps<TPropsFromState & TPropsFromDispatch, TOwnProps> 
         },
-        StatefulCompo: class StatefulCompo<S> extends Component<Props<STATE, DISPATCH>, S> {
+        StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps, STATE> {
 
         },
-        StatefulCompoWithProps: class StatefulCompo<PROPS, STATE> extends Component<Props<STATE, DISPATCH> & PROPS, STATE> {
-
-        },
-        StatelessCompo: (compo: (props: Props<STATE, DISPATCH>) => React.ReactElement<any>) => compo
+        StatelessCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps) => React.ReactElement<any>) => compo
     };
 }
-
-export const appConnector = <STATE, DISPATCH>(
-    mapStateToProps: MapStateToProps<STATE,{}>,
-    actions: DISPATCH,
-) => {
-    return apply({
-        mapStateToProps,
-        actions,
-    } as Config<STATE, DISPATCH>);
-}
-
+export { appConnector }
