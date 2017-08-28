@@ -1,4 +1,3 @@
 node_modules
-build
-app-support/dist
-app-support/node_modules
+dist
+demo/node_modules
