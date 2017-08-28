@@ -2,11 +2,11 @@ import { appConnectorWithRouter } from 'app-support';
 import { setContextName } from '../actions';
 import * as reducers from '../reducers';
 
-export default appConnectorWithRouter<{ id: string }, {title:string}>()(
+export default appConnectorWithRouter<{ id: string }, { title: string }>()(
     (s) => ({
         contextName: reducers.getContextName(s)
     }),
-    {setContextName}
+    { setContextName }
     /*
     (d) => {
         return {
