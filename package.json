@@ -40,6 +40,7 @@
   "scripts": {
     "release": "npm run build && npm version patch && npm publish & cd demo & yarn upgrade app-support",
     "build": "rimraf dist && tsc",
-    "postbuild": "babel dist -d dist"
+    "postbuild": "babel dist -d dist",
+    "demo":"cd demo && yarn start"
   }
 }
