@@ -20,6 +20,7 @@
     "@types/react-redux": "^5.0.4",
     "@types/react-router-dom": "^4.0.7",
     "@types/redux-thunk": "^2.1.0",
+    "app-support": "^1.0.9",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
@@ -41,6 +42,6 @@
     "release": "npm run build && npm version patch && npm publish & cd demo & yarn upgrade app-support",
     "build": "rimraf dist && tsc",
     "postbuild": "babel dist -d dist",
-    "demo":"cd demo && yarn start"
+    "demo": "cd demo && yarn start"
   }
 }
