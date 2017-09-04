@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './Demo/components/App';
-import registerServiceWorker from './registerServiceWorker';
+import { loadConfiguration } from 'app-support';
 
-ReactDOM.render(<App />, document.getElementById('root') as HTMLElement);
-registerServiceWorker();
+loadConfiguration('./config.json').then(cfg => {
+    ReactDOM.render(<App />, document.getElementById('root') as HTMLElement);
+});
