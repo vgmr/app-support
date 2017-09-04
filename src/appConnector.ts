@@ -1,7 +1,7 @@
 import {
-    connect, 
+    connect,
     MapStateToPropsParam,
-    MapDispatchToPropsParam, 
+    MapDispatchToPropsParam,
     //MapDispatchToPropsFactory,
     //InferableComponentEnhancerWithProps,
     Component
@@ -10,7 +10,7 @@ import * as React from 'react';
 
 const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
     mstp: MapStateToPropsParam<TPropsFromState, TOwnProps>,
-    mdtp: MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps>//    MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps> //| TPropsFromDispatch
+    mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps>//    MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps> //| TPropsFromDispatch
 ) => {
     return {
         connect: (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {

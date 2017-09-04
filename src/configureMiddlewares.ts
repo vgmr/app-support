@@ -1,9 +1,9 @@
 import { Middleware, applyMiddleware, Store, AnyAction, compose, createStore, Reducer } from 'redux';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import checkedPromise, { CheckedPromiseMiddlewareOptions, CreateAction, createAction } from 'redux-helper';
 import thunk from 'redux-thunk';
 
-export { AnyAction, Provider};
+export { AnyAction, Provider };
 
 function configureCheckedPromiseMiddleware(promiseCycleActions?: PromiseCycleActions) {
     const psa = promiseCycleActions || {
