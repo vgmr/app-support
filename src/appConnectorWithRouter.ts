@@ -12,7 +12,8 @@ const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, 
             return withRouter(connect(mstp, mdtp)(compo));
         },
         StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>, STATE> {
-
+            componentWillReceiveProps?(nextProps: Readonly<TPropsFromState & TPropsFromDispatch & TOwnProps>, nextContext: any):void;
+            
         },
         StatelessCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>) => React.ReactElement<any>) => compo
     };
