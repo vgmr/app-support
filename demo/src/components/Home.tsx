@@ -3,6 +3,7 @@ import cr from '../connectors/home';
 import { Link } from 'app-support';
 
 class Home extends cr.StatefulCompo<{}> {
+    
     render() {
         return (
             <div>

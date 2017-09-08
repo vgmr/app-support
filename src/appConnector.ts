@@ -17,7 +17,7 @@ const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
             return connect(mstp, mdtp)(compo); //as any as InferableComponentEnhancerWithProps<TPropsFromState & TPropsFromDispatch, TOwnProps> 
         },
         StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps, STATE> {
-
+            componentWillReceiveProps?(nextProps: Readonly<TPropsFromState & TPropsFromDispatch & TOwnProps>, nextContext: any):void;
         },
         StatelessCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps) => React.ReactElement<any>) => compo
     };
