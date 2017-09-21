@@ -9,7 +9,7 @@ const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, 
 ) => {
     const connect = (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>>) => {
         return withRouter(reduxConnect(mstp, mdtp)(compo)) as React.ComponentClass<TOwnProps>;
-    },
+    };
 
     return {
         connect,
