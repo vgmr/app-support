@@ -1,5 +1,5 @@
 import {
-    connect,
+    connect as reduxConnect,
     MapStateToPropsParam,
     MapDispatchToPropsParam,
     //MapDispatchToPropsFactory,
@@ -12,13 +12,17 @@ const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
     mstp: MapStateToPropsParam<TPropsFromState, TOwnProps>,
     mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps>//    MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps> //| TPropsFromDispatch
 ) => {
+    const connect = (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {
+        return reduxConnect(mstp, mdtp)(compo) as React.ComponentClass<TOwnProps>;
+    };
+
     return {
-        connect: (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {
-            return connect(mstp, mdtp)(compo) as React.ComponentClass<TOwnProps>;
-        },
+        connect,
+
         StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps, STATE> {
         },
-        StatelessCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps) => React.ReactElement<TOwnProps>) => compo
+
+        PureCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps) => React.ReactElement<TOwnProps>) => connect(compo)
     };
 }
 export { appConnector }
