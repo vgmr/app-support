@@ -8,8 +8,8 @@ const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, 
     mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps & RouteComponentProps<TRouterProps>>
 ) => {
     return {
-        connect: (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {
-            return withRouter(connect(mstp, mdtp)(compo));
+        connect: (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>>) => {
+            return withRouter(connect(mstp, mdtp)(compo)) as React.ComponentClass<TOwnProps>;
         },
         StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>, STATE> {
             componentWillReceiveProps?(nextProps: Readonly<TPropsFromState & TPropsFromDispatch & TOwnProps>, nextContext: any):void;
@@ -20,4 +20,3 @@ const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, 
 }
 
 export { appConnectorWithRouter }
-
