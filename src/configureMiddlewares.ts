@@ -4,38 +4,53 @@ import checkedPromise, { CheckedPromiseMiddlewareOptions, CreateAction, createAc
 import thunk from 'redux-thunk';
 
 export { AnyAction, Provider };
+/**
+ * @description= On Error action creator, this action will be dispatched on every promise action error
+ */
+export const onError = createAction<{ messageString: string, originalError: any }>('ON_ERROR');
+/**
+ * @description= On Start action creator, this action will be dispatched on every promise action start
+ */
+
+export const onStart = createAction<string>('ON_START');
+/**
+ * @description= On End action creator, this action will be dispatched on every succesful promise action end
+ */
+
+export const onEnd = createAction<void>('ON_END');
+
 
 function configureCheckedPromiseMiddleware(promiseCycleActions?: PromiseCycleActions) {
     const psa = promiseCycleActions || {
-        onStart: createAction<string>('ON_START'),
-        onEnd: createAction<void>('ON_END'),
-        onError: createAction<{ messageString: string, originalError: any }>('SHOW_ERROR')
+        onStart,
+        onEnd,
+        onError
     };
 
     const cpmOptions: CheckedPromiseMiddlewareOptions = {
         onStart: psa.onStart,
         onEnd: psa.onEnd,
-        onError: (msg: string | { response: string } | Error | any[]) => {
+        onError: (err: string | { response: string } | Error | any[]) => {
             let messageString = '';
             console.group('Error');
-            if (typeof (msg) === 'string') {
-                messageString = msg;
-            } else if (Array.isArray(msg) && msg.length > 0) {
-                messageString = msg[0].Message || 'Error';
+            if (typeof (err) === 'string') {
+                messageString = err;
+            } else if (Array.isArray(err) && err.length > 0) {
+                messageString = err[0].Message || 'Error';
 
-            } else if (typeof (msg) === 'object') { //SWAGGER EXCEPTION
-                var { response } = msg as { response: string };
+            } else if (typeof (err) === 'object') { //SWAGGER EXCEPTION
+                var { response } = err as { response: string };
                 if (response) {
                     messageString = response;
                 } else {
-                    messageString = msg.toString();
+                    messageString = err.toString();
                 }
             } else {
-                messageString = JSON.stringify(msg);
+                messageString = JSON.stringify(err);
             }
-            console.warn(msg);
+            console.warn(err);
             console.groupEnd();
-            return psa.onError( { messageString, originalError: msg });
+            return psa.onError( { messageString, originalError: err });
         }
     };
 
