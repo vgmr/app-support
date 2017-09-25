@@ -9,7 +9,7 @@ function configureCheckedPromiseMiddleware(promiseCycleActions?: PromiseCycleAct
     const psa = promiseCycleActions || {
         onStart: createAction<string>('ON_START'),
         onEnd: createAction<void>('ON_END'),
-        showError: createAction<string>('SHOW_ERROR')
+        onError: createAction<{ messageString: string, originalError: any }>('SHOW_ERROR')
     };
 
     const cpmOptions: CheckedPromiseMiddlewareOptions = {
@@ -35,7 +35,7 @@ function configureCheckedPromiseMiddleware(promiseCycleActions?: PromiseCycleAct
             }
             console.warn(msg);
             console.groupEnd();
-            return psa.showError(messageString);
+            return psa.onError( { messageString, originalError: msg });
         }
     };
 
@@ -53,7 +53,7 @@ export const createMiddleware = (promiseCycleActions?: PromiseCycleActions) => a
 export interface PromiseCycleActions {
     onStart: CreateAction<string>,
     onEnd: CreateAction<void>,
-    showError: CreateAction<string>
+    onError: CreateAction<{messageString:string, originalError:any}>
 }
 
 export function configureStore<IAppState>(root: Reducer<IAppState>, useDevTools?: boolean): Store<IAppState> {
