@@ -50,7 +50,7 @@ function configureCheckedPromiseMiddleware(promiseCycleActions?: PromiseCycleAct
             }
             console.warn(err);
             console.groupEnd();
-            return psa.onError( { messageString, originalError: err });
+            return psa.onError({ messageString, originalError: err });
         }
     };
 
@@ -68,22 +68,28 @@ export const createMiddleware = (promiseCycleActions?: PromiseCycleActions) => a
 export interface PromiseCycleActions {
     onStart: CreateAction<string>,
     onEnd: CreateAction<void>,
-    onError: CreateAction<{messageString:string, originalError:any}>
+    onError: CreateAction<{ messageString: string, originalError: any }>
 }
 
-export function configureStore<IAppState>(root: Reducer<IAppState>, useDevTools?: boolean): Store<IAppState> {
+export function configureStore<IAppState>(root: Reducer<IAppState>, useDevTools?: boolean): Store<IAppState>;
+export function configureStore<IAppState>(root: Reducer<IAppState>, preloadedState?: IAppState, useDevTools?: boolean): Store<IAppState>;
 
+export function configureStore<IAppState>(root: Reducer<IAppState>, preloadedStateOrUseDevTools?: IAppState | boolean, useDevTools?: boolean): Store<IAppState> {
     let enhancers = createMiddleware();
 
     // Dev Tools compose if available
     const wnd = window as any;
     const devTools = wnd.devToolsExtension !== undefined ? wnd.devToolsExtension() : (f: any) => f;
+    const hasDevToolsFlag = preloadedStateOrUseDevTools && typeof (preloadedStateOrUseDevTools) === "boolean";
 
-    if (devTools && useDevTools) {
+    const addDevTools = hasDevToolsFlag || (useDevTools || false);
+
+    if (devTools && addDevTools) {
         enhancers = compose(enhancers, devTools) as any;
     }
 
     // create store
-    return createStore<IAppState>(root, enhancers);
+    if (!hasDevToolsFlag && preloadedStateOrUseDevTools !== undefined) return createStore<IAppState>(root, <IAppState>preloadedStateOrUseDevTools, enhancers);
 
+    return createStore<IAppState>(root, enhancers);
 }
