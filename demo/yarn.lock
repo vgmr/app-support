@@ -174,7 +174,7 @@ anymatch@^1.3.0:
     normalize-path "^2.0.0"
 
 app-support@../:
-  version "1.0.16"
+  version "2.0.5"
   dependencies:
     "@types/react" "^16.0.14"
     "@types/react-dom" "^16.0.1"
@@ -186,7 +186,7 @@ app-support@../:
     react-redux "^5.0.6"
     react-router-dom "^4.2.2"
     redux "^3.7.2"
-    redux-helper "^0.0.56"
+    redux-helper "^0.0.59"
     redux-thunk "^2.2.0"
 
 append-transform@^0.4.0:
@@ -4548,9 +4548,9 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-helper@^0.0.56:
-  version "0.0.56"
-  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-0.0.56.tgz#c735419ef7ad0369c771e44264694f5e942d7683"
+redux-helper@^0.0.59:
+  version "0.0.59"
+  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-0.0.59.tgz#759ba5eab9619653ea4ceadb1ff6ad818506ce63"
   dependencies:
     redux "^3.5.2"
 
