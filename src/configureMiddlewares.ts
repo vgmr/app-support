@@ -28,8 +28,8 @@ function configureCheckedPromiseMiddleware(promiseCycleActions?: PromiseCycleAct
     };
 
     const cpmOptions: CheckedPromiseMiddlewareOptions = {
-        onStart: psa.onStart,
-        onEnd: psa.onEnd,
+        onStart: (msg) => psa.onStart(msg),
+        onEnd: (_) => psa.onEnd(),
         onError: (err: string | { response: string } | Error | any[]) => {
             let messageString = '';
             console.group('Error');
