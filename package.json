@@ -28,7 +28,7 @@
     "rimraf": "^2.6.2"
   },
   "scripts": {
-    "release": "npm run build && npm version patch && npm publish & cd demo & yarn upgrade app-support",
+    "release": "npm run build && npm version patch && npm publish",
     "build": "rimraf dist && tsc",
     "postbuild": "babel dist -d dist",
     "demo": "cd demo && yarn start"
