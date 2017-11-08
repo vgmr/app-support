@@ -1447,9 +1447,9 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
-redux-helper@^0.0.67:
-  version "0.0.67"
-  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-0.0.67.tgz#8d03a4824256311b93414f200a7400c50d851cf3"
+redux-helper@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-1.0.1.tgz#41310d4e751bf8e790ad70b257bc976ab16ac3e8"
   dependencies:
     redux "^3.7.2"
 
