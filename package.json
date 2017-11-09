@@ -1,7 +1,7 @@
 {
   "name": "app-support",
   "description": "Application support library, includes redux, redux-helper, react-router",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "private": false,
   "author": {
     "name": "Simone Mulas",
