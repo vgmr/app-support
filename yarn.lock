@@ -14,21 +14,21 @@
   version "8.0.50"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.50.tgz#dc545448e128c88c4eec7cd64025fcc3b7604541"
 
-"@types/react-dom@^16.0.2":
+"@types/react-dom@16.0.2":
   version "16.0.2"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.2.tgz#2da9de21fd83f0140b64794ad9c47930230aedae"
   dependencies:
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react-redux@^5.0.12":
+"@types/react-redux@5.0.12":
   version "5.0.12"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.12.tgz#c066812eb970009b373372f439d08265ed2a6f8e"
   dependencies:
     "@types/react" "*"
     redux "^3.6.0"
 
-"@types/react-router-dom@^4.2.0":
+"@types/react-router-dom@4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.2.0.tgz#0f2f11d1553bd5aafbd8f613317e8dc9291d7a34"
   dependencies:
@@ -36,14 +36,14 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router@*", "@types/react-router@^4.0.16":
+"@types/react-router@*", "@types/react-router@4.0.16":
   version "4.0.16"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.16.tgz#5153d07cb138a30c50aaaa33c8d654e8f321ae13"
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.0.21":
+"@types/react@*", "@types/react@16.0.21":
   version "16.0.21"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.21.tgz#1f4313594f784a477521a0795c46e7b832051ef3"
 

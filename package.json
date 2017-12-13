@@ -29,11 +29,11 @@
     "demo": "cd demo && yarn start"
   },
   "dependencies": {
-    "@types/react": "^16.0.21",
-    "@types/react-dom": "^16.0.2",
-    "@types/react-redux": "^5.0.12",
-    "@types/react-router": "^4.0.16",
-    "@types/react-router-dom": "^4.2.0",
+    "@types/react": "16.0.21",
+    "@types/react-dom": "16.0.2",
+    "@types/react-redux": "5.0.12",
+    "@types/react-router": "4.0.16",
+    "@types/react-router-dom": "4.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
