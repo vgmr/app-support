@@ -8,7 +8,7 @@ const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, 
     mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps & RouteComponentProps<TRouterProps>>
 ) => {
     const connect = (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>>) => {
-        return withRouter(reduxConnect(mstp, mdtp)(compo)) as React.ComponentClass<TOwnProps>;
+        return withRouter(reduxConnect(mstp, mdtp)(compo)) as any as React.ComponentClass<TOwnProps>;
     };
 
     return {
