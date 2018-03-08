@@ -2,6 +2,7 @@ import { connect as reduxConnect, MapStateToPropsParam, MapDispatchToPropsParam,
 import { withRouter, RouteComponentProps } from 'react-router';
 
 import * as React from 'react';
+import { appConnector } from '.';
 
 const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
     mstp: MapStateToPropsParam<TPropsFromState, TOwnProps & RouteComponentProps<TRouterProps>>,
@@ -13,9 +14,12 @@ const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, 
 
     return {
         connect,
-        StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>, STATE> {
+        StatefulCompo: class StatefulCompo<State> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>, State> {
+            castProps(p: any) {
+                return p as TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>;
+            }
         },
-        PureCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>) => React.ReactElement<TOwnProps>) => connect(compo)
+        PureCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps & RouteComponentProps<TRouterProps>) => React.ReactElement<TOwnProps> | null) => connect(compo)
     };
 }
 
