@@ -22,7 +22,7 @@ const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
         StatefulCompo: class StatefulCompo<STATE> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps, STATE> {
         },
 
-        PureCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps) => React.ReactElement<TOwnProps>) => connect(compo)
+        PureCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps) => React.ReactElement<TOwnProps> | null) => connect(compo)
     };
 }
 export { appConnector }
