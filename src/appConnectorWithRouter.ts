@@ -2,7 +2,6 @@ import { connect as reduxConnect, MapStateToPropsParam, MapDispatchToPropsParam,
 import { withRouter, RouteComponentProps } from 'react-router';
 
 import * as React from 'react';
-import { appConnector } from '.';
 
 const appConnectorWithRouter = <TRouterProps, TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
     mstp: MapStateToPropsParam<TPropsFromState, TOwnProps & RouteComponentProps<TRouterProps>>,
