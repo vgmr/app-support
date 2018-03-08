@@ -1,6 +1,6 @@
 # app-support
 
-helper library for react development which icludes:
+helper library for react development which includes:
 - Redux
 - React-router
 - Redux-Helper
