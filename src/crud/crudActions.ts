@@ -1,6 +1,6 @@
 import { createAction } from "redux-helper/dist/actionCreators";
 import { createPromiseAction } from "redux-helper";
-import { CreatePromiseAction, CreateAction } from "app-support";
+import { CreatePromiseAction, CreateAction } from "redux-helper";
 import { Crud } from "./crudProxy";
 
 interface ActionWrapper<T, R> {
