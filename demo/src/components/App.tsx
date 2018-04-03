@@ -12,8 +12,8 @@ class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <Router>
                     <div>
-                        <Route exact path="/:id" component={Home} />
-                        <Route exact path="/" component={Home} />
+                        <Route exact path="/:id" component={(props: any) => <Home id={props.match.params.id} title="title" />} />
+                        <Route exact path="/" component={(props: any) => <Home id="" title="1" />} />
                     </div>
                 </Router>
             </Provider>

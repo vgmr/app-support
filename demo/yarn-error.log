@@ -1,0 +1,57 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.9.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "test_react",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "app-support": "./..",
+      "react": "^16.3.0",
+      "react-dom": "^16.3.0",
+    },
+    "devDependencies": {
+      "@types/jest": "^22.2.2",
+      "@types/lodash": "^4.14.106",
+      "@types/node": "^9.6.1",
+      "@types/react": "^16.3.2",
+      "@types/react-dom": "^16.0.4",
+      "react-scripts-ts": "2.14.0",
+      "typescript": "^2.8.1"
+    },
+    "scripts": {
+      "start": "react-scripts-ts start",
+      "build": "cd app-support && yarn build && cd .. && yarn upgrade app-support@./app-support",
+      "test": "react-scripts-ts test --env=jsdom",
+      "eject": "react-scripts-ts eject",
+      "release": "cd app-support && yarn release"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  SyntaxError: /Users/simo/code/mildev-app-support/demo/package.json: Unexpected token } in JSON at position 168
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1036:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>

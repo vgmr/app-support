@@ -2,31 +2,39 @@ import {
     connect as reduxConnect,
     MapStateToPropsParam,
     MapDispatchToPropsParam,
-    //MapDispatchToPropsFactory,
-    //InferableComponentEnhancerWithProps,
     Component
 } from 'react-redux';
 import * as React from 'react';
+
+
 
 const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
     mstp: MapStateToPropsParam<TPropsFromState, TOwnProps, any>,
     mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps>//    MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps> //| TPropsFromDispatch
 ) => {
-    const connect = (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {
+
+    type Props = TPropsFromState & TPropsFromDispatch & TOwnProps;
+
+    const connect = (compo: Component<Props>) => {
         return reduxConnect(mstp, mdtp)(compo) as React.ComponentClass<TOwnProps>;
     };
 
     return {
         connect,
 
-        StatefulCompo: class StatefulCompo<State> extends React.Component<TPropsFromState & TPropsFromDispatch & TOwnProps, State> {
+        StatefulCompo: class StatefulComponent<State> extends React.Component<Props, State> {
+            
             castProps(p: any) {
-                return p as TPropsFromState & TPropsFromDispatch & TOwnProps;
+                return p as Props;
+            }
+
+            set derivedStateFromProps(value: (nextProps: Props, prevState: State) => State) {
+                StatefulComponent["getDeriverdStateFromProps"] = value;
             }
 
         },
 
-        PureCompo: (compo: (props: TPropsFromState & TPropsFromDispatch & TOwnProps) => React.ReactElement<TOwnProps> | null) => connect(compo)
+        PureCompo: (compo: (props: Props) => React.ReactElement<TOwnProps> | null) => connect(compo)
     };
 }
 export { appConnector }

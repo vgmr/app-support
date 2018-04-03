@@ -23,7 +23,6 @@
         "jsx-boolean-value": false,
         "jsx-no-multiline-js": false,
         "label-position": true,
-        "max-line-length": [ true, 120 ],
         "member-ordering": [
             true,
             "public-before-private",
@@ -33,16 +32,6 @@
         "no-any": false,
         "no-arg": true,
         "no-bitwise": true,
-        "no-console": [
-            true,
-            "log",
-            "error",
-            "debug",
-            "info",
-            "time",
-            "timeEnd",
-            "trace"
-        ],
         "no-consecutive-blank-lines": true,
         "no-construct": true,
         "no-debugger": true,

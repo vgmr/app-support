@@ -1,13 +1,22 @@
 import * as React from 'react';
-import cr from '../connectors/home';
 import { Link } from 'app-support';
+import { appConnector } from 'app-support';
+import { setContextName } from '../actions';
+import * as reducers from '../reducers';
 
-class Home extends cr.StatefulCompo<{}> {
-    
+const conn = appConnector<{ id: string, title: string }>()(
+    s => ({
+        contextName: reducers.getContextName(s)
+    }),
+    { setContextName }
+
+);
+class Home extends conn.StatefulCompo<{}> {
+
     render() {
         return (
             <div>
-                <div>Id From Router Props: {this.props.match.params.id}</div>
+                <div>Id From Router Props: {this.props.id}</div>
                 <div>Context Name From State: {this.props.contextName}</div>
                 <div>Title from Own Props: {this.props.title}</div>
                 <hr />
@@ -19,4 +28,4 @@ class Home extends cr.StatefulCompo<{}> {
     }
 }
 
-export default cr.connect(Home);
+export default conn.connect(Home);

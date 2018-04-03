@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
+    "outDir": "build",
+    "module": "commonjs",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
@@ -19,12 +19,15 @@
   },
   "exclude": [
     "node_modules",
-    "app-support",
+    "lib",
     "build",
     "scripts",
     "acceptance-tests",
     "webpack",
     "jest",
     "src/setupTests.ts"
+  ],
+  "types": [
+    "typePatches"
   ]
 }
