@@ -9,7 +9,7 @@ import {
 import * as React from 'react';
 
 const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
-    mstp: MapStateToPropsParam<TPropsFromState, TOwnProps>,
+    mstp: MapStateToPropsParam<TPropsFromState, TOwnProps, any>,
     mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps>//    MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps> //| TPropsFromDispatch
 ) => {
     const connect = (compo: Component<TPropsFromState & TPropsFromDispatch & TOwnProps>) => {
