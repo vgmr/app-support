@@ -21,18 +21,35 @@ const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
         connect,
 
         StatefulCompo: class StatefulComponent<State> extends React.Component<Props, State> {
-
-            set derivedStateFromProps(value: (nextProps: Props, prevState: State) => State) {
-                StatefulComponent["getDeriverdStateFromProps"] = value;
+            castProps(p: any) {
+                return p as Props;
             }
-
         },
 
         PureCompo: (compo: (props: Props) => React.ReactElement<TOwnProps> | null) => connect(compo),
 
-        castProps: (p:any) => p as Props,
+        castProps: (p: any) => p as Props,
 
         propsObject: {} as Props
     };
 }
 export { appConnector }
+
+/*
+export const conn = appConnector()(s => ({}), {});
+
+export interface State { }
+
+export class Test extends conn.StatefulCompo<State>{
+
+    static getDerivedStateFromProps(props: any, state: State) {
+        const p = conn.castProps(props);
+        return { ...state, ...p }
+    }
+
+    render() {
+        return null;
+    }
+}
+
+*/
