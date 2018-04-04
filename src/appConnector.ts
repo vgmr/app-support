@@ -6,8 +6,6 @@ import {
 } from 'react-redux';
 import * as React from 'react';
 
-
-
 const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
     mstp: MapStateToPropsParam<TPropsFromState, TOwnProps, any>,
     mdtp: MapDispatchToPropsParam<TPropsFromDispatch, TOwnProps>//    MapDispatchToPropsParam<TPropsFromDispatch,TOwnProps> //| TPropsFromDispatch
@@ -23,10 +21,6 @@ const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
         connect,
 
         StatefulCompo: class StatefulComponent<State> extends React.Component<Props, State> {
-            
-            castProps(p: any) {
-                return p as Props;
-            }
 
             set derivedStateFromProps(value: (nextProps: Props, prevState: State) => State) {
                 StatefulComponent["getDeriverdStateFromProps"] = value;
@@ -34,7 +28,11 @@ const appConnector = <TOwnProps>() => <TPropsFromState, TPropsFromDispatch>(
 
         },
 
-        PureCompo: (compo: (props: Props) => React.ReactElement<TOwnProps> | null) => connect(compo)
+        PureCompo: (compo: (props: Props) => React.ReactElement<TOwnProps> | null) => connect(compo),
+
+        castProps: (p:any) => p as Props,
+
+        propsObject: {} as Props
     };
 }
 export { appConnector }
