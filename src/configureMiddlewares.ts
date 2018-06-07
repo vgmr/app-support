@@ -89,7 +89,7 @@ export function configureStore<IAppState>(root: Reducer<IAppState>, preloadedSta
     }
 
     // create store
-    if (!hasDevToolsFlag && preloadedStateOrUseDevTools !== undefined) return createStore<IAppState>(root, <IAppState>preloadedStateOrUseDevTools, enhancers);
+    if (!hasDevToolsFlag && preloadedStateOrUseDevTools !== undefined) return createStore<IAppState,any,any,any>(root,preloadedStateOrUseDevTools as any, enhancers);
 
-    return createStore<IAppState>(root, enhancers);
+    return createStore<IAppState,any,any,any>(root, enhancers);
 }

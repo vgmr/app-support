@@ -16,6 +16,11 @@
   "devDependencies": {
     "@types/jest": "^21.1.8",
     "@types/node": "^8.0.58",
+    "@types/react": "^16.3.2",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-redux": "^5.0.15",
+    "@types/react-router": "^4.0.23",
+    "@types/react-router-dom": "^4.2.6",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-plugin-transform-object-assign": "^6.22.0"
@@ -27,17 +32,12 @@
     "demo": "cd demo && yarn start"
   },
   "dependencies": {
-    "@types/react": "^16.3.2",
-    "@types/react-dom": "^16.0.4",
-    "@types/react-redux": "^5.0.15",
-    "@types/react-router": "^4.0.23",
-    "@types/react-router-dom": "^4.2.6",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
     "redux-helper": "^1.0.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.3.0"
   }
 }
