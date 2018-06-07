@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import checkedPromise, { CheckedPromiseMiddlewareOptions, CreateAction, createAction } from 'redux-helper';
 import thunk from 'redux-thunk';
 
+
 export { AnyAction, Provider };
 /**
  * @description= On Error action creator, this action will be dispatched on every promise action error
@@ -60,7 +61,7 @@ function configureCheckedPromiseMiddleware(promiseCycleActions?: PromiseCycleAct
 const configureAll = (promiseCycleActions?: PromiseCycleActions): Middleware[] => {
     const configuredCpm = checkedPromise(configureCheckedPromiseMiddleware());
     const middlewares = [configuredCpm, thunk];
-    return middlewares;
+    return middlewares as any;
 };
 
 export const createMiddleware = (promiseCycleActions?: PromiseCycleActions) => applyMiddleware(...configureAll());

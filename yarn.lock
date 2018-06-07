@@ -1036,17 +1036,18 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
-redux-helper@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-1.0.3.tgz#5ecc2abd0e65ce31433f99c1ef0ed63c5c6211ce"
+redux-helper@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-1.0.4.tgz#174d489f1d6a4032bb13b3f00ea2e28e803d8b49"
   dependencies:
-    redux "^3.7.2"
+    redux "^4.0.0"
+    redux-thunk "^2.3.0"
 
 redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 
-redux@^3.6.0, redux@^3.7.2:
+redux@^3.6.0:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:
