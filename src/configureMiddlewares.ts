@@ -1,4 +1,4 @@
-import { Middleware, applyMiddleware, Store, AnyAction, compose, createStore, Reducer } from 'redux';
+import { Middleware, applyMiddleware, Store, AnyAction, compose, createStore, Reducer ,StoreEnhancer} from 'redux';
 import { Provider } from 'react-redux';
 import checkedPromise, { CheckedPromiseMiddlewareOptions, CreateAction, createAction } from 'redux-helper';
 import thunk from 'redux-thunk';
@@ -64,7 +64,7 @@ const configureAll = (promiseCycleActions?: PromiseCycleActions): Middleware[] =
     return middlewares as any;
 };
 
-export const createMiddleware = (promiseCycleActions?: PromiseCycleActions) => applyMiddleware(...configureAll());
+export const createMiddleware = (promiseCycleActions?: PromiseCycleActions):StoreEnhancer<{dispatch:any}> => applyMiddleware(...configureAll());
 
 export interface PromiseCycleActions {
     onStart: CreateAction<string>,
