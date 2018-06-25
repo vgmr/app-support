@@ -1037,8 +1037,8 @@ readdirp@^2.0.0:
     set-immediate-shim "^1.0.1"
 
 redux-helper@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-1.0.4.tgz#174d489f1d6a4032bb13b3f00ea2e28e803d8b49"
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/redux-helper/-/redux-helper-1.0.5.tgz#54c42f7829b737eac77e083c272ef87772674be1"
   dependencies:
     redux "^4.0.0"
     redux-thunk "^2.3.0"
